@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="ru.hgrranzi.app.model.Model" %>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -10,8 +12,8 @@
     </div>
     <p>
         <%
-        String date = "Current date: " + new java.util.Date();
-        String numberOfContacts = "Number of contacts in the list: " + ru.hgrranzi.app.model.Model.getInstance().getContactList().size();
+        String date = "Current date: " + new Date();
+        String numberOfContacts = "Number of contacts in the list: " + Model.getInstance().getContactList().size();
         %>
         <%= date %>
     </p>
