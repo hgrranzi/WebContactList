@@ -3,20 +3,20 @@ package ru.hgrranzi.app.entities;
 import java.util.Objects;
 
 public class Contact {
-    private String nickname;
-    private String firstName;
+    private String nickname; // letters, digits, _
+    private String firstName; // letters, - in the middle, first uppercase
     private String lastName;
-    private int age;
-    private String phoneNumber;
-    private String email;
+    private int age; // digits max 3
+    private String phoneNumber; // digits 10
+    private String email; // email format
 
-    public Contact(String nickname, String firstName, String lastName, int age, String phoneNumber, String email) {
-        this.nickname = nickname;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public Contact(String nickname, String firstName, String lastName, String age, String phoneNumber, String email) throws IllegalArgumentException {
+        setNickname(nickname);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setAge(age);
+        setPhoneNumber(phoneNumber);
+        setEmail(email);
     }
 
     public String getNickname() {
@@ -47,8 +47,11 @@ public class Contact {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge(String age) {
+        if (!age.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("Invalid age format");
+        }
+        this.age = Integer.parseInt(age);
     }
 
     public String getPhoneNumber() {
@@ -72,11 +75,11 @@ public class Contact {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contact contact = (Contact) o;
-        return age == contact.age && firstName.equals(contact.firstName) && lastName.equals(contact.lastName) && Objects.equals(phoneNumber, contact.phoneNumber) && Objects.equals(email, contact.email);
+        return nickname.equals(contact.nickname) && phoneNumber.equals(contact.phoneNumber) && email.equals(contact.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, age, phoneNumber, email);
+        return Objects.hash(nickname, phoneNumber, email);
     }
 }

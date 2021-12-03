@@ -24,13 +24,18 @@ public class AddContactServlet extends HttpServlet {
         String nickname = req.getParameter("nickname");
         String firstName = req.getParameter("firstname");
         String lastName = req.getParameter("lastname");
-        int age = Integer.parseInt(req.getParameter("age"));
+        String age = req.getParameter("age");
         String phoneNumber = req.getParameter("phone");
         String email = req.getParameter("email");
-        Contact contact = new Contact(nickname, firstName, lastName, age, phoneNumber, email);
-        Model model = Model.getInstance();
-        model.addContact(contact);
-        req.setAttribute("nick", nickname);
+        Contact contact;
+        try {
+            contact = new Contact(nickname, firstName, lastName, age, phoneNumber, email);
+            Model model = Model.getInstance();
+            model.addContact(contact);
+            req.setAttribute("nick", nickname);
+        } catch (IllegalArgumentException e) {
+            // resp with an error jsp?
+        }
         doGet(req, resp);
     }
 }
