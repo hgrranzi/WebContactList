@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -5,7 +6,21 @@
     </head>
     <body>
         <h1>Add contact page</h1>
+        <button onclick="location.href='/'">Back to main page</button>
+        <%
+            String message = "Add new contact";
+            if (request.getAttribute("nick") != null) {
+                message = request.getAttribute("nick").toString() + " added! " + message;
+            }
+        %>
+        <p>
+            <%= message%>
+        </p>
         <form method="post">
+            <label>Nickname:
+                <input type="text" name="nickname"><br />
+            </label>
+
             <label>First name:
                 <input type="text" name="firstname"><br />
             </label>

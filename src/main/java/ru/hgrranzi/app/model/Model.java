@@ -33,5 +33,12 @@ public class Model {
         this.contactList.add(contact);
     }
 
+    public List<String> listContacts() {
+        List<String> namesList = new ArrayList<>(this.contactList.size());
 
+        for (Contact contact : this.contactList) {
+            namesList.add(contact.getNickname());
+        }
+        return namesList;
+    }
 }

@@ -3,18 +3,28 @@ package ru.hgrranzi.app.entities;
 import java.util.Objects;
 
 public class Contact {
+    private String nickname;
     private String firstName;
     private String lastName;
     private int age;
     private String phoneNumber;
     private String email;
 
-    public Contact(String firstName, String lastName, int age, String phoneNumber, String email) {
+    public Contact(String nickname, String firstName, String lastName, int age, String phoneNumber, String email) {
+        this.nickname = nickname;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getFirstName() {

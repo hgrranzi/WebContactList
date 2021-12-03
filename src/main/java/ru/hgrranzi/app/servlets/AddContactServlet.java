@@ -21,13 +21,16 @@ public class AddContactServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String nickname = req.getParameter("nickname");
         String firstName = req.getParameter("firstname");
         String lastName = req.getParameter("lastname");
         int age = Integer.parseInt(req.getParameter("age"));
         String phoneNumber = req.getParameter("phone");
         String email = req.getParameter("email");
-        Contact contact = new Contact(firstName, lastName, age, phoneNumber, email);
+        Contact contact = new Contact(nickname, firstName, lastName, age, phoneNumber, email);
         Model model = Model.getInstance();
         model.addContact(contact);
+        req.setAttribute("nick", nickname);
+        doGet(req, resp);
     }
 }
