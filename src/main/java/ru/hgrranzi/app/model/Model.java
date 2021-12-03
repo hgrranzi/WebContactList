@@ -11,7 +11,7 @@ public class Model {
     private List<Contact> contactList;
 
     private Model() {
-        this.contactList = new ArrayList<Contact>();
+        this.contactList = new ArrayList<>();
     };
 
     public List<Contact> getContactList() {
@@ -27,6 +27,10 @@ public class Model {
             INSTANCE = new Model();
         }
         return INSTANCE;
+    }
+
+    public void addContact(Contact contact) {
+        this.contactList.add(contact);
     }
 
 
