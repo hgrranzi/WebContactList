@@ -5,11 +5,19 @@
     <title>WebContactList</title>
   </head>
   <body>
-<!-- header -->
     <div>
-      <h1>Hello!</h1>
+      <h1>WebContactList</h1>
     </div>
-
+    <p>
+        <%
+        String date = "Current date: " + new java.util.Date();
+        String numberOfContacts = "Number of contacts in the list: " + ru.hgrranzi.app.model.Model.getInstance().getContactList().size();
+        %>
+        <%= date %>
+    </p>
+    <p>
+        <%= numberOfContacts %>
+    </p>
     <div>       <!-- content -->
       <div>    <!-- buttons holder -->
         <button onclick="location.href='/add'">Add contact</button>
