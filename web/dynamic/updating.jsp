@@ -8,28 +8,32 @@
 <body>
 <h1>Update contact</h1>
 <button onclick="location.href='/'">Back to main page</button>
-<h2>Update 'nickname'</h2>
+<h2>Update <%=request.getAttribute("nickname")%></h2>
 <form method="post">
+    <label>
+        <input hidden type="text" name="nickname" value="<%=request.getAttribute("nickname")%>"><br />
+    </label>
+
     <label>First name:
-        <input type="text" name="firstname"><br />
+        <input type="text" name="firstname" value="<%=request.getAttribute("firstname")%>"><br />
     </label>
 
     <label>Last name:
-        <input type="text" name="lastname"><br />
+        <input type="text" name="lastname" value="<%=request.getAttribute("lastname")%>"><br />
     </label>
 
     <label>Age:
-        <input type="text" name="age"><br />
+        <input type="text" name="age" value="<%=request.getAttribute("age")%>"><br />
     </label>
 
     <label>Phone number:
-        <input type="text" name="phone"><br />
+        <input type="text" name="phone" value="<%=request.getAttribute("phone")%>"><br />
     </label>
 
     <label>email:
-        <input type="text" name="email"><br />
+        <input type="text" name="email" value="<%=request.getAttribute("email")%>"><br />
     </label>
-    <button type="submit">Submit</button>
+    <button type="submit" value="updating">Submit</button>
 </form>
 </body>
 </html>

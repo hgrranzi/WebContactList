@@ -31,6 +31,10 @@ public class Model {
         this.contactMap.put(key, contact);
     }
 
+    public void updateContact(String key, Contact contact) {
+        this.contactMap.put(key, contact);
+    }
+
     public List<String> listContacts() {
         List<String> namesList = new ArrayList<>(this.contactMap.size());
 

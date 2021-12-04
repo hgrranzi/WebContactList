@@ -8,6 +8,15 @@
     <body>
         <h1>Update contact</h1>
         <button onclick="location.href='/'">Back to main page</button>
+        <%
+            String message = "Enter the nickname";
+            if (request.getAttribute("error") != null) {
+                message = "Error! " + request.getAttribute("error").toString() + " Try again";
+            }
+        %>
+        <p>
+            <%= message%>
+        </p>
         <form method="post">
             <label>Nickname:
                 <input type="text" name="nickname"><br />
