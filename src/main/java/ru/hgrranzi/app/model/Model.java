@@ -2,24 +2,19 @@ package ru.hgrranzi.app.model;
 
 import ru.hgrranzi.app.entities.Contact;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Model {
     private static Model INSTANCE;
 
-    private List<Contact> contactList;
+    private final Map<String, Contact> contactMap;
 
     private Model() {
-        this.contactList = new ArrayList<>();
+        this.contactMap = new HashMap<>();
     };
 
-    public List<Contact> getContactList() {
-        return contactList;
-    }
-
-    public void setContactList(List<Contact> contactList) {
-        this.contactList = contactList;
+    public Map<String, Contact> getContactMap() {
+        return contactMap;
     }
 
     public static Model getInstance() {
@@ -29,15 +24,18 @@ public class Model {
         return INSTANCE;
     }
 
-    public void addContact(Contact contact) {
-        this.contactList.add(contact);
+    public void addContact(String key, Contact contact) {
+        if (contactMap.containsKey(key)) {
+            throw new IllegalArgumentException("Contact with that nickname already exists.");
+        }
+        this.contactMap.put(key, contact);
     }
 
     public List<String> listContacts() {
-        List<String> namesList = new ArrayList<>(this.contactList.size());
+        List<String> namesList = new ArrayList<>(this.contactMap.size());
 
-        for (Contact contact : this.contactList) {
-            namesList.add(contact.getNickname());
+        for (Map.Entry<String, Contact> entry : contactMap.entrySet()) {
+            namesList.add(entry.getValue().getNickname());
         }
         return namesList;
     }

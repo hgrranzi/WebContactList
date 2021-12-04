@@ -31,7 +31,7 @@ public class AddContactServlet extends HttpServlet {
         try {
             contact = new Contact(nickname, firstName, lastName, age, phoneNumber, email);
             Model model = Model.getInstance();
-            model.addContact(contact);
+            model.addContact(contact.getNickname(), contact);
             req.setAttribute("nick", nickname);
         } catch (IllegalArgumentException e) {
             req.setAttribute("error", e.getMessage());

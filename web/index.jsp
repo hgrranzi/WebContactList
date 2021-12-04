@@ -13,7 +13,7 @@
     <p>
         <%
         String date = "Current date: " + new Date();
-        String numberOfContacts = "Number of contacts in the list: " + Model.getInstance().getContactList().size();
+        String numberOfContacts = "Number of contacts in the list: " + Model.getInstance().getContactMap().size();
         %>
         <%= date %>
     </p>
