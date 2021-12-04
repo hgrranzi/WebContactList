@@ -24,6 +24,8 @@
       <div>    <!-- buttons holder -->
         <button onclick="location.href='/add'">Add contact</button>
         <button onclick="location.href='/show'">Show contacts</button>
+        <button onclick="location.href='/update'">Update contact</button>
+        <button onclick="location.href='/delete'">Delete contact</button>
       </div>
     </div>
   </body>
