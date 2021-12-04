@@ -11,6 +11,8 @@
             String message = "Add new contact";
             if (request.getAttribute("nick") != null) {
                 message = request.getAttribute("nick").toString() + " added! " + message;
+            } else if (request.getAttribute("error") != null) {
+                message = "Error! " + request.getAttribute("error").toString() + " Try again";
             }
         %>
         <p>
