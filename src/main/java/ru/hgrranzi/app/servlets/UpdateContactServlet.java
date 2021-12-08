@@ -24,7 +24,7 @@ public class UpdateContactServlet extends HttpServlet {
         String nickname = req.getParameter("nickname");
         Model model = Model.getInstance();
         String age = req.getParameter("age");
-        if (nickname == null) {
+        if (age == null) {
             if (!nickname.equals("")) {
                 if (model.getContactMap().containsKey(nickname)) {
                     req.setAttribute("nickname", nickname);
